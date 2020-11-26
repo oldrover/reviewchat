@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Chat</title>
@@ -7,8 +7,6 @@
 <body>
 
 <form action="#" th:action="@{/chat}" th:object="${chatForm}" method="POST">
-    <label for="username">Username:</label>
-    <input id="username" th:field="*{username}" type="text">
     <label for="messageText">Message Text:</label>
     <input id="messageText" th:field="*{messageText}" type="text">
     <label for="messageType">Message Type: </label>
