@@ -17,7 +17,7 @@ public class MessageService {
 
     public int addMessage(ChatForm chatForm) {
         ChatMessage newMessage = new ChatMessage();
-        newMessage.setUsername("Testuser");
+        newMessage.setUsername(chatForm.getUsername());
         switch (chatForm.getMessageType()) {
             case "Say" -> newMessage.setMessage(chatForm.getMessageText());
             case "Shout" -> newMessage.setMessage(chatForm.getMessageText().toUpperCase());
