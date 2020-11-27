@@ -17,7 +17,7 @@ public class MessageService {
 
     public int addMessage(ChatForm chatForm) {
         ChatMessage newMessage = new ChatMessage();
-        newMessage.setUsername(chatForm.getUsername());
+        newMessage.setUsername("Testuser");
         switch (chatForm.getMessageType()) {
             case "Say" -> newMessage.setMessage(chatForm.getMessageText());
             case "Shout" -> newMessage.setMessage(chatForm.getMessageText().toUpperCase());
@@ -28,7 +28,7 @@ public class MessageService {
 
     }
 
-    public ChatMessage getChatMessages() {
+    public ChatMessage[] getChatMessages() {
         return messageMapper.getMessage();
     }
 
