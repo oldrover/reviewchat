@@ -24,7 +24,7 @@ public class ChatController {
     }
 
     @GetMapping
-    public String getChatPage(ChatForm chatForm, Model model, Authentication authentication) {
+    public String getChatPage( Authentication authentication, ChatForm chatForm, Model model) {
         chatForm.setUsername(authentication.getName());
         model.addAttribute("chatMessages", this.messageService.getChatMessages());
         return "chat";
