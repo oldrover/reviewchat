@@ -5,7 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+public class SignupPage {
+
+    @FindBy(id= "inputFirstName")
+    private WebElement inputFirstName;
+
+    @FindBy(id= "inputLastName")
+    private WebElement inputLastName;
 
     @FindBy(id= "inputUsername")
     private WebElement inputUsername;
@@ -16,11 +22,19 @@ public class LoginPage {
     @FindBy(id= "submit-button")
     private WebElement submitButton;
 
-    @FindBy(id= "signup-link")
-    private WebElement signupLink;
+    @FindBy(id= "login-link")
+    private WebElement loginlink;
 
-    public LoginPage(WebDriver webDriver) {
+    public SignupPage(WebDriver webDriver) {
         PageFactory.initElements(webDriver, this);
+
+    }
+
+    public void setFirstName(String firstName) {
+        inputFirstName.sendKeys(firstName);
+    }
+    public void setLastName(String lastName) {
+        inputLastName.sendKeys(lastName);
     }
 
     public void setUsername(String username) {
@@ -31,14 +45,16 @@ public class LoginPage {
         inputPassword.sendKeys(password);
     }
 
-    public void clickLoginButton() {
+    public void clickSubmitButton() {
         submitButton.click();
     }
 
-    public void clickSignupLink() {
-        signupLink.click();
-
+    public void clickLoginLink() {
+        loginlink.click();
     }
+
+
+
 
 
 }
