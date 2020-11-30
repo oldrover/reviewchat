@@ -24,14 +24,14 @@ public class ChatController {
     }
 
     @GetMapping
-    public String getChatPage( Authentication authentication, ChatForm chatForm, Model model) {
-        chatForm.setUsername(authentication.getName());
+    public String getChatPage(ChatForm chatForm, Model model) {
         model.addAttribute("chatMessages", this.messageService.getChatMessages());
         return "chat";
     }
 
     @PostMapping
-    public String postChatMessage(ChatForm chatForm, Model model) {
+    public String postChatMessage(Authentication authentication, ChatForm chatForm, Model model) {
+        chatForm.setUsername(authentication.getName());
         this.messageService.addMessage(chatForm);
         chatForm.setMessageText("");
         model.addAttribute("chatMessages", this.messageService.getChatMessages());

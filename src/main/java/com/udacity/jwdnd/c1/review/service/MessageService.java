@@ -28,7 +28,7 @@ public class MessageService {
 
     }
 
-    public ChatMessage[] getChatMessages() {
+    public List<ChatMessage> getChatMessages() {
         return messageMapper.getMessage();
     }
 

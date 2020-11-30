@@ -2,28 +2,48 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
     <title>Chat</title>
 </head>
 <body>
 
-<form action="#" th:action="@{/chat}" th:object="${chatForm}" method="POST">
-    <label for="username">Username:</label>
-    <input id="username" th:field="*{username}" type="text" disabled>
-    <label for="messageText">Message Text:</label>
-    <input id="messageText" th:field="*{messageText}" type="text">
-    <label for="messageType">Message Type: </label>
-    <select id="messageType" th:field="*{messageType}">
-        <option th:each="type : ${allMessageTypes}" th:value="${type}" th:text="${type}">
-                Say
-            </option>
+	<div class="container">	
+	<nav class="navbar navbar-default bg-light">
+		<div class="container-fluid">
+			<form class= "navbar-form form-inline" action="#" th:action="@{/chat}" th:object="${chatForm}" method="POST">
+				<div class="form-group">
+    				<label for="messageText" style="margin:10px;">Message Text:</label>
+    				<input class="form-control" id="messageText" th:field="*{messageText}" type="text">
+    				<label for="messageType" style="margin:10px;">Message Type: </label>
+    				<select class="form-control" id="messageType" style="margin:10px;" th:field="*{messageType}">
+        				<option th:each="type : ${allMessageTypes}" th:value="${type}" th:text="${type}">
+                		Say
+            		</option>
 
-        </select>
-        <input type="submit">
-    </form>
-
-    <div th:each="chatMessage : ${chatMessages}">
-        <span  th:text="${chatMessage.username}">Username</span>:
-        <span th:text="${chatMessage.message}">Hello</span>
+        			</select>
+        			<input class="btn btn-primary" type="submit">
+   				</div>    
+			</form>
+		</div>
+	</nav>
+	</div>
+	
+	<div class="container">
+	    <div th:each="chatMessage : ${chatMessages}">
+       	<span  th:text="${chatMessage.username}">Username</span>:
+       	<span th:text="${chatMessage.message}">Hello</span>
+    	</div>
     </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
 </body>
 </html>
