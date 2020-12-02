@@ -7,20 +7,23 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ChatPage {
 
-    @FindBy(id= "messageText")
+    @FindBy(id = "messageText")
     private WebElement messageText;
 
-    @FindBy(id= "messageType")
+    @FindBy(id = "messageType")
     private WebElement messageType;
 
-    @FindBy(id= "submitButton")
+    @FindBy(id = "submitButton")
     private WebElement submitButton;
 
-    @FindBy(id= "logoutLink")
+    @FindBy(id = "logoutLink")
     private WebElement logoutLink;
 
-    @FindBy(id= "message")
+    @FindBy(id = "message")
     private WebElement message;
+    
+    @FindBy(id = "username")
+    private WebElement username;
 
     public ChatPage(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
@@ -41,6 +44,8 @@ public class ChatPage {
     public String getMessageText() {
         return message.getText();
     }
+    
+    public String getUsername() { return username.getText();}
 
 
 

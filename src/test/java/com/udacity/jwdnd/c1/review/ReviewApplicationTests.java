@@ -10,6 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ReviewApplicationTests {
 	@LocalServerPort
@@ -63,11 +65,14 @@ class ReviewApplicationTests {
 	}
 
 	@Test
-	public void chatTest() {
+	public void chatTest() throws InterruptedException {
 		chat = new ChatPage(driver);
-		chat.setMessageText("Test Message");
+		String testMessage ="Test Message";
+		chat.setMessageText(testMessage);
 		chat.clickSubmitButton();
-
+		Thread.sleep(1000);
+		assertEquals(testMessage, chat.getMessageText());
+		assertEquals(testUser.getUsername(), chat.getUsername());
 
 	}
 
