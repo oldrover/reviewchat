@@ -36,7 +36,7 @@
 	<div class="container">
 	    <div th:each="chatMessage : ${chatMessages}">
        	<span  th:text="${chatMessage.username}">Username</span>:
-       	<span th:text="${chatMessage.message}">Hello</span>
+       	<span id="message" th:text="${chatMessage.message}">Hello</span>
     	</div>
     </div>
     

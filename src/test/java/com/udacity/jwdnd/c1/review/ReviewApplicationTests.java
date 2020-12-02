@@ -19,11 +19,17 @@ class ReviewApplicationTests {
 	private ChatPage chat;
 	private LoginPage login;
 	private SignupPage signup;
+	private static TestUser testUser;
 
 	@BeforeAll
 	public static void beforeAll() {
 		WebDriverManager.firefoxdriver().setup();
 		driver = new FirefoxDriver();
+		testUser= new TestUser(
+				"Firstname",
+				"Lastname",
+				"Username",
+				"Password");
 	}
 
 	@AfterAll
@@ -35,10 +41,10 @@ class ReviewApplicationTests {
 	public void signupTest() throws InterruptedException {
 		driver.get("http://localhost:" + port + "/signup");
 		signup = new SignupPage(driver);
-		signup.setFirstName("firstname");
-		signup.setLastName("lastname");
-		signup.setUsername("username");
-		signup.setPassword("password");
+		signup.setFirstName(testUser.getFirstname());
+		signup.setLastName(testUser.getLastname());
+		signup.setUsername(testUser.getUsername());
+		signup.setPassword(testUser.getPassword());
 		signup.clickSubmitButton();
 		Thread.sleep(2000);
 		signup.clickLoginLink();
@@ -46,8 +52,21 @@ class ReviewApplicationTests {
 	}
 
 	@Test
-	public void loginTest() {
+	public void loginTest() throws InterruptedException {
 		login = new LoginPage(driver);
+		login.setUsername(testUser.getUsername());
+		login.setPassword(testUser.getPassword());
+		login.clickLoginButton();
+		Thread.sleep(2000);
+		chatTest();
+
+	}
+
+	@Test
+	public void chatTest() {
+		chat = new ChatPage(driver);
+		chat.setMessageText("Test Message");
+		chat.clickSubmitButton();
 
 
 	}

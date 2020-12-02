@@ -19,6 +19,9 @@ public class ChatPage {
     @FindBy(id= "logoutLink")
     private WebElement logoutLink;
 
+    @FindBy(id= "message")
+    private WebElement message;
+
     public ChatPage(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
     }
@@ -33,6 +36,10 @@ public class ChatPage {
 
     public void clickLogoutLink() {
         logoutLink.click();
+    }
+
+    public String getMessageText() {
+        return message.getText();
     }
 
 
